@@ -4,9 +4,9 @@ part 'competition_model.g.dart';
 
 @JsonSerializable()
 class CompetitionModel {
-  List<Data> list;
+  List<Data> data;
 
-  CompetitionModel({required this.list});
+  CompetitionModel({required this.data});
 
   factory CompetitionModel.fromJson(Map<String, dynamic> json) =>
       _$CompetitionModelFromJson(json);
@@ -22,22 +22,44 @@ class Data {
   String startDate;
   @JsonKey(name: 'end_date')
   String endDate;
-  String organizators;
+  Organizator organizator;
   String location;
   String address;
-  int federation;
+  String federation;
+  @JsonKey(name: 'competition_type')
+  String competitionType;
+  String? region;
 
   Data(
       {required this.id,
       required this.name,
       required this.startDate,
       required this.endDate,
-      required this.organizators,
+      required this.organizator,
       required this.location,
       required this.address,
-      required this.federation});
+      required this.federation,
+      required this.competitionType,
+      this.region});
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 
   Map<String, dynamic> toJson() => _$DataToJson(this);
+}
+
+@JsonSerializable()
+class Organizator {
+  String id;
+  @JsonKey(name: 'first_name')
+  String firstName;
+  @JsonKey(name: 'last_name')
+  String lastName;
+
+  Organizator(
+      {required this.id, required this.firstName, required this.lastName});
+
+  factory Organizator.fromJson(Map<String, dynamic> json) =>
+      _$OrganizatorFromJson(json);
+
+  Map<String, dynamic> toJson() => _$OrganizatorToJson(this);
 }

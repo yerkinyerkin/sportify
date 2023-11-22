@@ -3,7 +3,7 @@ import 'package:sportify/screens/competition/logic/data/datasources/competition_
 import 'package:sportify/screens/competition/logic/data/models/competition_model.dart';
 
 abstract class CompetitionRepository {
-  Future<List<Data>> getCompetition();
+  Future<CompetitionModel> getCompetition();
 }
 
 class CompetitionRepositoryImpl implements CompetitionRepository {
@@ -12,8 +12,8 @@ class CompetitionRepositoryImpl implements CompetitionRepository {
   CompetitionRepositoryImpl(this.competitionDataSource);
 
   @override
-  Future<List<Data>> getCompetition() async {
+  Future<CompetitionModel> getCompetition() async {
     Response response = await competitionDataSource.getCompetition();
-    return (response.data as List).map((i) => Data.fromJson(i)).toList();
+    return CompetitionModel.fromJson(response.data);
   }
 }

@@ -15,7 +15,7 @@ class CompetitionBloc extends Bloc<CompetitionEvent, CompetitionState> {
       (event, emit) async {
         emit(CompetitionLoading());
         try {
-          final List<Data> response =
+          final CompetitionModel response =
               await competitionRepository.getCompetition();
           emit(CompetitionSuccess(response));
         } on DioError catch (e) {

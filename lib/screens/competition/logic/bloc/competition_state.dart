@@ -7,7 +7,7 @@ class CompetitionInitial extends CompetitionState {}
 class CompetitionLoading extends CompetitionState {}
 
 class CompetitionSuccess extends CompetitionState {
-  final List<Data> response;
+  final CompetitionModel response;
 
   CompetitionSuccess(this.response);
 }

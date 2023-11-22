@@ -37,7 +37,7 @@ class _CompetitionScreenState extends State<CompetitionScreen> {
                         horizontal: 16, vertical: 20),
                     child: ListView.separated(
                       separatorBuilder: (context, index) => const Divider(),
-                      itemCount: 4,
+                      itemCount: state.response.data.length,
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (BuildContext context, int index) {
@@ -46,8 +46,9 @@ class _CompetitionScreenState extends State<CompetitionScreen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                         ResultScreen(name: state.response[index].name,)));
+                                    builder: (context) => ResultScreen(
+                                          name: state.response.data[index].name,
+                                        )));
                           },
                           child: Container(
                             color: Colors.transparent,
@@ -59,12 +60,14 @@ class _CompetitionScreenState extends State<CompetitionScreen> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(state.response[index].name),
+                                      Text(state.response.data[index].name),
                                       const SizedBox(height: 4),
                                       Row(
                                         children: [
-                                          Text(state.response[index].location),
-                                          Text(state.response[index].address),
+                                          Text(state
+                                              .response.data[index].location),
+                                          Text(state
+                                              .response.data[index].address),
                                         ],
                                       )
                                     ],
