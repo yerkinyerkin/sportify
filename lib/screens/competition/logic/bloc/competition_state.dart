@@ -8,8 +8,9 @@ class CompetitionLoading extends CompetitionState {}
 
 class CompetitionSuccess extends CompetitionState {
   final CompetitionModel response;
+  final RegionsModel regionsModel;
 
-  CompetitionSuccess(this.response);
+  CompetitionSuccess(this.response, this.regionsModel);
 }
 
 class CompetitionFailure extends CompetitionState {

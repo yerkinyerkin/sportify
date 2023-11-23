@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sportify/core/getIt/injection_container.dart';
 import 'package:sportify/screens/competition/logic/bloc/competition_bloc.dart';
-import 'package:sportify/screens/result/screens/result_screen.dart';
+import 'package:sportify/screens/competition/screens/region_competition.dart';
+import 'package:sportify/screens/competition/screens/republic_competition.dart';
 
 class CompetitionScreen extends StatefulWidget {
   const CompetitionScreen({super.key});
@@ -20,7 +21,7 @@ class _CompetitionScreenState extends State<CompetitionScreen> {
           backgroundColor: const Color(0xff24154E),
         ),
         body: BlocProvider(
-          create: (context) => sl<CompetitionBloc>()..add(GetCompetition()),
+          create: (context) => sl<CompetitionBloc>()..add(GetCompetition("")),
           child: BlocBuilder<CompetitionBloc, CompetitionState>(
             builder: (context, state) {
               if (state is CompetitionInitial) {
@@ -31,56 +32,28 @@ class _CompetitionScreenState extends State<CompetitionScreen> {
               }
 
               if (state is CompetitionSuccess) {
-                return SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 20),
-                    child: ListView.separated(
-                      separatorBuilder: (context, index) => const Divider(),
-                      itemCount: state.response.data.length,
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (BuildContext context, int index) {
-                        return InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ResultScreen(
-                                          name: state.response.data[index].name,
-                                        )));
-                          },
-                          child: Container(
-                            color: Colors.transparent,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(state.response.data[index].name),
-                                      const SizedBox(height: 4),
-                                      Row(
-                                        children: [
-                                          Text(state
-                                              .response.data[index].location),
-                                          Text(state
-                                              .response.data[index].address),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ],
+                return DefaultTabController(
+                    length: 2,
+                    child: Column(
+                      children: [
+                        const TabBar(
+                          tabs: [
+                            Tab(text: 'Республикалық турнир'),
+                            Tab(text: 'Облыстық турнир'),
+                          ],
+                        ),
+                        Expanded(
+                          child: TabBarView(children: [
+                            RepublicCompetition(
+                              listOfData: state.response.data,
                             ),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                );
+                            RegionCompetition(
+                              listOfRegions: state.regionsModel.data,
+                            )
+                          ]),
+                        )
+                      ],
+                    ));
               }
               return const Offstage();
             },
