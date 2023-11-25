@@ -32,7 +32,27 @@ class _RegionIntoScreenState extends State<RegionIntoScreen> {
               }
 
               if (state is CompetitionSuccess) {
-                return Text(widget.slug);
+                return SingleChildScrollView(
+                  child: Container(
+                    child: Column(
+                      children: [
+                        ListView.builder(
+                            itemCount: state.response.data.length,
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (BuildContext context, int index) {
+                              return Container(
+                                child: Column(
+                                  children: [
+                                    Text("${state.response.data[index].name}")
+                                  ],
+                                ),
+                              );
+                            })
+                      ],
+                    ),
+                  ),
+                );
               }
               return const Offstage();
             },
