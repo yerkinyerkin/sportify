@@ -16,7 +16,8 @@ class _RegionIntoScreenState extends State<RegionIntoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: false,
+          iconTheme: const IconThemeData(color: Colors.white),
+          automaticallyImplyLeading: true,
           backgroundColor: const Color(0xff24154E),
         ),
         body: BlocProvider(

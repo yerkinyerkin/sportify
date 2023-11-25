@@ -17,38 +17,21 @@ class GridModel {
 @JsonSerializable()
 class Data {
   String id;
-  @JsonKey(name: 'first_name')
-  String firstName;
-  @JsonKey(name: 'last_name')
-  String lastName;
-  Club club;
-  String competition;
   @JsonKey(name: 'red_corner')
-  String redCorner;
+  RedCorner? redCorner;
   @JsonKey(name: 'blue_corner')
-  String blueCorner;
-  String parent;
-  @JsonKey(name: 'age_category')
-  String ageCategory;
-  @JsonKey(name: 'weight_category')
-  String weightCategory;
-  String winner;
-  int level;
+  BlueCorner? blueCorner;
+  @JsonKey(name: 'red_corner_winner')
+  bool redCornerWinner;
+  @JsonKey(name: 'blue_corner_winner')
+  bool blueCornerWinner;
 
-  Data({
-    required this.id,
-    required this.firstName,
-    required this.lastName,
-    required this.club,
-    required this.competition,
-    required this.redCorner,
-    required this.blueCorner,
-    required this.parent,
-    required this.ageCategory,
-    required this.weightCategory,
-    required this.winner,
-    required this.level,
-  });
+  Data(
+      {required this.id,
+      this.redCorner,
+      this.blueCorner,
+      required this.redCornerWinner,
+      required this.blueCornerWinner});
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 
@@ -56,13 +39,88 @@ class Data {
 }
 
 @JsonSerializable()
-class Club {
-  String logo;
-  String name;
+class RedCorner {
+  String? id;
+  @JsonKey(name: 'student_info')
+  StudentInfo? studentInfo;
+  String? place;
 
-  Club({required this.logo, required this.name});
+  RedCorner({this.id, this.studentInfo, this.place});
+
+  factory RedCorner.fromJson(Map<String, dynamic> json) =>
+      _$RedCornerFromJson(json);
+
+  Map<String, dynamic> toJson() => _$RedCornerToJson(this);
+}
+
+@JsonSerializable()
+class BlueCorner {
+  String? id;
+  @JsonKey(name: 'student_info')
+  StudentInfo? studentInfo;
+  String? place;
+
+  BlueCorner({this.id, this.studentInfo, this.place});
+
+  factory BlueCorner.fromJson(Map<String, dynamic> json) =>
+      _$BlueCornerFromJson(json);
+
+  Map<String, dynamic> toJson() => _$BlueCornerToJson(this);
+}
+
+@JsonSerializable()
+class StudentInfo {
+  String? id;
+  @JsonKey(name: 'first_name')
+  String? firstName;
+  @JsonKey(name: 'last_name')
+  String? lastName;
+  String? image;
+  Club? club;
+  String? location;
+  Coach? coach;
+
+  StudentInfo(
+      {this.id,
+      this.firstName,
+      this.lastName,
+      this.image,
+      this.club,
+      this.location,
+      this.coach});
+
+  factory StudentInfo.fromJson(Map<String, dynamic> json) =>
+      _$StudentInfoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$StudentInfoToJson(this);
+}
+
+@JsonSerializable()
+class Club {
+  String? id;
+  String? name;
+  String? logo;
+  String? location;
+
+  Club({this.id, this.name, this.logo, this.location});
 
   factory Club.fromJson(Map<String, dynamic> json) => _$ClubFromJson(json);
 
   Map<String, dynamic> toJson() => _$ClubToJson(this);
+}
+
+@JsonSerializable()
+class Coach {
+  String? id;
+  @JsonKey(name: 'first_name')
+  String? firstName;
+  @JsonKey(name: 'last_name')
+  String? lastName;
+  String? image;
+
+  Coach({this.id, this.firstName, this.lastName, this.image});
+
+  factory Coach.fromJson(Map<String, dynamic> json) => _$CoachFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CoachToJson(this);
 }

@@ -18,40 +18,102 @@ Map<String, dynamic> _$GridModelToJson(GridModel instance) => <String, dynamic>{
 
 Data _$DataFromJson(Map<String, dynamic> json) => Data(
       id: json['id'] as String,
-      firstName: json['first_name'] as String,
-      lastName: json['last_name'] as String,
-      club: Club.fromJson(json['club'] as Map<String, dynamic>),
-      competition: json['competition'] as String,
-      redCorner: json['red_corner'] as String,
-      blueCorner: json['blue_corner'] as String,
-      parent: json['parent'] as String,
-      ageCategory: json['age_category'] as String,
-      weightCategory: json['weight_category'] as String,
-      winner: json['winner'] as String,
-      level: json['level'] as int,
+      redCorner: json['red_corner'] == null
+          ? null
+          : RedCorner.fromJson(json['red_corner'] as Map<String, dynamic>),
+      blueCorner: json['blue_corner'] == null
+          ? null
+          : BlueCorner.fromJson(json['blue_corner'] as Map<String, dynamic>),
+      redCornerWinner: json['red_corner_winner'] as bool,
+      blueCornerWinner: json['blue_corner_winner'] as bool,
     );
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'id': instance.id,
-      'first_name': instance.firstName,
-      'last_name': instance.lastName,
-      'club': instance.club,
-      'competition': instance.competition,
       'red_corner': instance.redCorner,
       'blue_corner': instance.blueCorner,
-      'parent': instance.parent,
-      'age_category': instance.ageCategory,
-      'weight_category': instance.weightCategory,
-      'winner': instance.winner,
-      'level': instance.level,
+      'red_corner_winner': instance.redCornerWinner,
+      'blue_corner_winner': instance.blueCornerWinner,
+    };
+
+RedCorner _$RedCornerFromJson(Map<String, dynamic> json) => RedCorner(
+      id: json['id'] as String?,
+      studentInfo: json['student_info'] == null
+          ? null
+          : StudentInfo.fromJson(json['student_info'] as Map<String, dynamic>),
+      place: json['place'] as String?,
+    );
+
+Map<String, dynamic> _$RedCornerToJson(RedCorner instance) => <String, dynamic>{
+      'id': instance.id,
+      'student_info': instance.studentInfo,
+      'place': instance.place,
+    };
+
+BlueCorner _$BlueCornerFromJson(Map<String, dynamic> json) => BlueCorner(
+      id: json['id'] as String?,
+      studentInfo: json['student_info'] == null
+          ? null
+          : StudentInfo.fromJson(json['student_info'] as Map<String, dynamic>),
+      place: json['place'] as String?,
+    );
+
+Map<String, dynamic> _$BlueCornerToJson(BlueCorner instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'student_info': instance.studentInfo,
+      'place': instance.place,
+    };
+
+StudentInfo _$StudentInfoFromJson(Map<String, dynamic> json) => StudentInfo(
+      id: json['id'] as String?,
+      firstName: json['first_name'] as String?,
+      lastName: json['last_name'] as String?,
+      image: json['image'] as String?,
+      club: json['club'] == null
+          ? null
+          : Club.fromJson(json['club'] as Map<String, dynamic>),
+      location: json['location'] as String?,
+      coach: json['coach'] == null
+          ? null
+          : Coach.fromJson(json['coach'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$StudentInfoToJson(StudentInfo instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'first_name': instance.firstName,
+      'last_name': instance.lastName,
+      'image': instance.image,
+      'club': instance.club,
+      'location': instance.location,
+      'coach': instance.coach,
     };
 
 Club _$ClubFromJson(Map<String, dynamic> json) => Club(
-      logo: json['logo'] as String,
-      name: json['name'] as String,
+      id: json['id'] as String?,
+      name: json['name'] as String?,
+      logo: json['logo'] as String?,
+      location: json['location'] as String?,
     );
 
 Map<String, dynamic> _$ClubToJson(Club instance) => <String, dynamic>{
-      'logo': instance.logo,
+      'id': instance.id,
       'name': instance.name,
+      'logo': instance.logo,
+      'location': instance.location,
+    };
+
+Coach _$CoachFromJson(Map<String, dynamic> json) => Coach(
+      id: json['id'] as String?,
+      firstName: json['first_name'] as String?,
+      lastName: json['last_name'] as String?,
+      image: json['image'] as String?,
+    );
+
+Map<String, dynamic> _$CoachToJson(Coach instance) => <String, dynamic>{
+      'id': instance.id,
+      'first_name': instance.firstName,
+      'last_name': instance.lastName,
+      'image': instance.image,
     };

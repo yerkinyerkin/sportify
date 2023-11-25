@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sportify/screens/result/screens/grid/logic/data/models/grid_model.dart';
 
 class ThirdSectionGrid extends StatefulWidget {
-  const ThirdSectionGrid({super.key});
+  final List<Data> thirdSectionList;
+  const ThirdSectionGrid({super.key, required this.thirdSectionList});
 
   @override
   State<ThirdSectionGrid> createState() => _ThirdSectionGridState();
@@ -21,14 +23,19 @@ class _ThirdSectionGridState extends State<ThirdSectionGrid> {
                 children: [
                   const SizedBox(height: 150),
                   Container(
+                    width: 220,
                     padding: const EdgeInsets.only(
                         left: 48, right: 48, top: 4, bottom: 4),
                     color: Colors.grey,
-                    child: const Column(
+                    child: Column(
                       children: [
-                        Text("Taniyev Kenzhebek"),
-                        SizedBox(height: 16),
-                        Text("Taniyev Kenzhebek"),
+                        Text(widget.thirdSectionList[6].redCorner?.studentInfo!
+                                .firstName ??
+                            ""),
+                        const SizedBox(height: 16),
+                        Text(widget.thirdSectionList[6].blueCorner?.studentInfo!
+                                .firstName ??
+                            ""),
                       ],
                     ),
                   ),

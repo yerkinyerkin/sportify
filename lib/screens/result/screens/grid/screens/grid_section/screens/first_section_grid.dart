@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sportify/screens/result/screens/grid/logic/data/models/grid_model.dart';
 
 class FirstSectionGrid extends StatefulWidget {
-  const FirstSectionGrid({super.key});
+  final List<Data> firstSectionList;
+  const FirstSectionGrid({super.key, required this.firstSectionList});
 
   @override
   State<FirstSectionGrid> createState() => _FirstSectionGridState();
@@ -21,53 +23,73 @@ class _FirstSectionGridState extends State<FirstSectionGrid> {
                 children: [
                   const SizedBox(height: 16),
                   Container(
+                    width: 220,
                     padding: const EdgeInsets.only(
                         left: 48, right: 48, top: 4, bottom: 4),
                     color: Colors.grey,
-                    child: const Column(
+                    child: Column(
                       children: [
-                        Text("Taniyev Kenzhebek"),
-                        SizedBox(height: 16),
-                        Text("Taniyev Kenzhebek"),
+                        Text(widget.firstSectionList[0].redCorner!.studentInfo!
+                                .firstName ??
+                            ""),
+                        const SizedBox(height: 16),
+                        Text(widget.firstSectionList[0].blueCorner!.studentInfo!
+                                .firstName ??
+                            ""),
                       ],
                     ),
                   ),
                   const SizedBox(height: 24),
                   Container(
+                    width: 220,
                     padding: const EdgeInsets.only(
                         left: 48, right: 48, top: 4, bottom: 4),
                     color: Colors.grey,
-                    child: const Column(
+                    child: Column(
                       children: [
-                        Text("Taniyev Kenzhebek"),
-                        SizedBox(height: 16),
-                        Text("Taniyev Kenzhebek"),
+                        Text(widget.firstSectionList[1].redCorner!.studentInfo!
+                                .firstName ??
+                            ""),
+                        const SizedBox(height: 16),
+                        Text(widget.firstSectionList[1].blueCorner!.studentInfo!
+                                .firstName ??
+                            ""),
                       ],
                     ),
                   ),
                   const SizedBox(height: 24),
                   Container(
+                    width: 220,
                     padding: const EdgeInsets.only(
                         left: 48, right: 48, top: 4, bottom: 4),
                     color: Colors.grey,
-                    child: const Column(
+                    child: Column(
                       children: [
-                        Text("Taniyev Kenzhebek"),
-                        SizedBox(height: 16),
-                        Text("Taniyev Kenzhebek"),
+                        Text(widget.firstSectionList[2].redCorner!.studentInfo!
+                                .firstName ??
+                            ""),
+                        const SizedBox(height: 16),
+                        Text(widget.firstSectionList[2].blueCorner!.studentInfo!
+                                .firstName ??
+                            ""),
                       ],
                     ),
                   ),
                   const SizedBox(height: 24),
                   Container(
+                    width: 220,
                     padding: const EdgeInsets.only(
                         left: 48, right: 48, top: 4, bottom: 4),
                     color: Colors.grey,
-                    child: const Column(
+                    child: Column(
                       children: [
-                        Text("Taniyev Kenzhebek"),
-                        SizedBox(height: 16),
-                        Text("Taniyev Kenzhebek"),
+                        Text(widget.firstSectionList[3].redCorner!.studentInfo!
+                                .firstName ??
+                            ""),
+                        const SizedBox(height: 16),
+                        Text(widget.firstSectionList[3].blueCorner!.studentInfo!
+                                .firstName ??
+                            ""),
                       ],
                     ),
                   ),

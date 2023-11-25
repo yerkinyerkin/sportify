@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:sportify/screens/result/screens/grid/screens/grid_screen.dart';
 
 class ResultScreen extends StatefulWidget {
+  final String id;
   final String name;
-  const ResultScreen({super.key, required this.name});
+  const ResultScreen({super.key, required this.id, required this.name});
 
   @override
   State<ResultScreen> createState() => _ResultScreenState();
@@ -38,7 +39,7 @@ class _ResultScreenState extends State<ResultScreen> {
             Expanded(
               child: TabBarView(
                 children: [
-                  GridScreen(),
+                  GridScreen(id: widget.id,),
                   Container(
                     child: Text('Content for SubTab 2 of Tab'),
                   ),

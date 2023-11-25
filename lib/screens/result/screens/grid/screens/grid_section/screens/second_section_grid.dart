@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sportify/screens/result/screens/grid/logic/data/models/grid_model.dart';
 
 class SecondSectionGrid extends StatefulWidget {
-  const SecondSectionGrid({super.key});
+  final List<Data> secondSectionList;
+  const SecondSectionGrid({super.key, required this.secondSectionList});
 
   @override
   State<SecondSectionGrid> createState() => _SecondSectionGridState();
@@ -21,27 +23,37 @@ class _SecondSectionGridState extends State<SecondSectionGrid> {
                 children: [
                   const SizedBox(height: 65),
                   Container(
+                    width: 220,
                     padding: const EdgeInsets.only(
                         left: 48, right: 48, top: 4, bottom: 4),
                     color: Colors.grey,
-                    child: const Column(
+                    child: Column(
                       children: [
-                        Text("Taniyev Kenzhebek"),
-                        SizedBox(height: 16),
-                        Text("Taniyev Kenzhebek"),
+                        Text(widget.secondSectionList[4].redCorner?.studentInfo!
+                                .firstName ??
+                            ""),
+                        const SizedBox(height: 16),
+                        Text(widget.secondSectionList[4].blueCorner
+                                ?.studentInfo!.firstName ??
+                            ""),
                       ],
                     ),
                   ),
                   const SizedBox(height: 105),
                   Container(
+                    width: 220,
                     padding: const EdgeInsets.only(
                         left: 48, right: 48, top: 4, bottom: 4),
                     color: Colors.grey,
-                    child: const Column(
+                    child: Column(
                       children: [
-                        Text("Taniyev Kenzhebek"),
-                        SizedBox(height: 16),
-                        Text("Taniyev Kenzhebek"),
+                        Text(widget.secondSectionList[5].redCorner?.studentInfo!
+                                .firstName ??
+                            ""),
+                        const SizedBox(height: 16),
+                        Text(widget.secondSectionList[5].blueCorner
+                                ?.studentInfo!.firstName ??
+                            ""),
                       ],
                     ),
                   ),

@@ -28,6 +28,7 @@ class _RepublicCompetitionState extends State<RepublicCompetition> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => ResultScreen(
+                              id: widget.listOfData[index].id,
                               name: widget.listOfData[index].name,
                             )));
               },
