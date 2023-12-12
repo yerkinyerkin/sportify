@@ -5,6 +5,9 @@ import 'package:sportify/screens/competition/logic/data/repositories/competition
 import 'package:sportify/screens/login/logic/bloc/login_bloc.dart';
 import 'package:sportify/screens/login/logic/data/datasources/login_datasource.dart';
 import 'package:sportify/screens/login/logic/data/repositories/login_repository.dart';
+import 'package:sportify/screens/result/screens/winners/logic/bloc/winners_bloc.dart';
+import 'package:sportify/screens/result/screens/winners/logic/data/datasources/grid_datasource.dart';
+import 'package:sportify/screens/result/screens/winners/logic/data/repositories%20copy/grid_repository.dart';
 import 'package:sportify/screens/result/screens/grid/logic/bloc/grid_bloc.dart';
 import 'package:sportify/screens/result/screens/grid/logic/data/datasources/grid_datasource.dart';
 import 'package:sportify/screens/result/screens/grid/logic/data/repositories/grid_repository.dart';
@@ -31,4 +34,10 @@ void initGetIt() async {
   sl.registerLazySingleton<GridRepository>(() => GridRepositoryImpl(sl()));
 
   sl.registerLazySingleton<GridDataSource>(() => GridDataSourceImpl());
+
+  sl.registerFactory<WinnersBloc>(() => WinnersBloc(sl()));
+
+  sl.registerLazySingleton<WinnersRepository>(() => WinnersRepositoryImpl(sl()));
+
+  sl.registerLazySingleton<WinnersDataSource>(() => WinnersDataSourceImpl());
 }

@@ -43,7 +43,7 @@ class RedCorner {
   String? id;
   @JsonKey(name: 'student_info')
   StudentInfo? studentInfo;
-  String? place;
+  int? place;
 
   RedCorner({this.id, this.studentInfo, this.place});
 
@@ -58,7 +58,7 @@ class BlueCorner {
   String? id;
   @JsonKey(name: 'student_info')
   StudentInfo? studentInfo;
-  String? place;
+  int? place;
 
   BlueCorner({this.id, this.studentInfo, this.place});
 

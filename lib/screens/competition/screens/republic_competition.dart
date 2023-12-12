@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sportify/core/custom/app_text_style.dart';
+import 'package:sportify/core/custom/divider_container.dart';
+import 'package:sportify/core/custom/height_spacer.dart';
+import 'package:sportify/core/custom/reusable_text.dart';
+import 'package:sportify/core/custom/utils/constants.dart';
 import 'package:sportify/screens/competition/logic/data/models/competition_model.dart';
 import 'package:sportify/screens/result/screens/result_screen.dart';
 
@@ -15,49 +20,71 @@ class _RepublicCompetitionState extends State<RepublicCompetition> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-        child: ListView.separated(
-          separatorBuilder: (context, index) => const Divider(),
-          itemCount: widget.listOfData.length,
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (BuildContext context, int index) {
-            return InkWell(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ResultScreen(
-                              id: widget.listOfData[index].id,
-                              name: widget.listOfData[index].name,
-                            )));
-              },
-              child: Container(
-                color: Colors.transparent,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(widget.listOfData[index].name),
-                          const SizedBox(height: 4),
-                          Row(
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        child:
+            ListView.builder(
+              itemCount: widget.listOfData.length,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                  color: AppConst.kDarkPurple,
+                  child: Column(
+                    children: [
+                      const DividerContainer(),
+                      const HeightSpacer(height: 4),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ResultScreen(
+                                        id: widget.listOfData[index].id,
+                                        name: widget.listOfData[index].name,
+                                      )));
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(widget.listOfData[index].location),
-                              Text(widget.listOfData[index].address),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    ReusableText(
+                                        text: widget.listOfData[index].address,
+                                        style: appstyle(
+                                            10, AppConst.kWhite, FontWeight.w400)),
+                                    ReusableText(
+                                        text: widget.listOfData[index].name,
+                                        style: appstyle(
+                                            15, AppConst.kWhite, FontWeight.w600)),
+                                    const SizedBox(height: 4),
+                                    Row(
+                                      children: [
+                                        ReusableText(
+                                            text: widget.listOfData[index].location,
+                                            style: appstyle(10, AppConst.kWhite,
+                                                FontWeight.w400)),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
                             ],
-                          )
-                        ],
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          },
-        ),
+                      const HeightSpacer(height: 4),
+                    ],
+                  ),
+                );
+              },
+            ),
+         
       ),
     );
   }

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sportify/core/custom/app_text_style.dart';
+import 'package:sportify/core/custom/reusable_text.dart';
+import 'package:sportify/core/custom/utils/constants.dart';
 import 'package:sportify/screens/result/screens/grid/logic/data/models/grid_model.dart';
 
 class FirstSectionGrid extends StatefulWidget {
@@ -26,16 +29,22 @@ class _FirstSectionGridState extends State<FirstSectionGrid> {
                     width: 220,
                     padding: const EdgeInsets.only(
                         left: 48, right: 48, top: 4, bottom: 4),
-                    color: Colors.grey,
+                    color: AppConst.kMaroon,
                     child: Column(
                       children: [
-                        Text(widget.firstSectionList[0].redCorner!.studentInfo!
-                                .firstName ??
-                            ""),
+                        ReusableText(
+                            text: widget.firstSectionList[0].redCorner!
+                                    .studentInfo!.firstName ??
+                                "",
+                            style:
+                                appstyle(11, AppConst.kWhite, FontWeight.w700)),
                         const SizedBox(height: 16),
-                        Text(widget.firstSectionList[0].blueCorner!.studentInfo!
-                                .firstName ??
-                            ""),
+                        ReusableText(
+                            text: widget.firstSectionList[0].blueCorner!
+                                    .studentInfo!.firstName ??
+                                "",
+                            style:
+                                appstyle(11, AppConst.kWhite, FontWeight.w700)),
                       ],
                     ),
                   ),
@@ -44,16 +53,22 @@ class _FirstSectionGridState extends State<FirstSectionGrid> {
                     width: 220,
                     padding: const EdgeInsets.only(
                         left: 48, right: 48, top: 4, bottom: 4),
-                    color: Colors.grey,
+                    color: AppConst.kMaroon,
                     child: Column(
                       children: [
-                        Text(widget.firstSectionList[1].redCorner!.studentInfo!
-                                .firstName ??
-                            ""),
+                        ReusableText(
+                          text: widget.firstSectionList[1].redCorner!
+                                  .studentInfo!.firstName ??
+                              "",
+                          style: appstyle(11, AppConst.kWhite, FontWeight.w700),
+                        ),
                         const SizedBox(height: 16),
-                        Text(widget.firstSectionList[1].blueCorner!.studentInfo!
-                                .firstName ??
-                            ""),
+                        ReusableText(
+                          text: widget.firstSectionList[1].blueCorner!
+                                  .studentInfo!.firstName ??
+                              "",
+                          style: appstyle(11, AppConst.kWhite, FontWeight.w700),
+                        ),
                       ],
                     ),
                   ),
@@ -62,16 +77,22 @@ class _FirstSectionGridState extends State<FirstSectionGrid> {
                     width: 220,
                     padding: const EdgeInsets.only(
                         left: 48, right: 48, top: 4, bottom: 4),
-                    color: Colors.grey,
+                    color: AppConst.kMaroon,
                     child: Column(
                       children: [
-                        Text(widget.firstSectionList[2].redCorner!.studentInfo!
-                                .firstName ??
-                            ""),
+                        ReusableText(
+                          text: widget.firstSectionList[2].redCorner!
+                                  .studentInfo!.firstName ??
+                              "",
+                          style: appstyle(11, AppConst.kWhite, FontWeight.w700),
+                        ),
                         const SizedBox(height: 16),
-                        Text(widget.firstSectionList[2].blueCorner!.studentInfo!
-                                .firstName ??
-                            ""),
+                        ReusableText(
+                          text: widget.firstSectionList[2].blueCorner!
+                                  .studentInfo!.firstName ??
+                              "",
+                          style: appstyle(11, AppConst.kWhite, FontWeight.w700),
+                        ),
                       ],
                     ),
                   ),
@@ -80,16 +101,22 @@ class _FirstSectionGridState extends State<FirstSectionGrid> {
                     width: 220,
                     padding: const EdgeInsets.only(
                         left: 48, right: 48, top: 4, bottom: 4),
-                    color: Colors.grey,
+                    color: AppConst.kMaroon,
                     child: Column(
                       children: [
-                        Text(widget.firstSectionList[3].redCorner!.studentInfo!
-                                .firstName ??
-                            ""),
+                        ReusableText(
+                          text: widget.firstSectionList[3].redCorner!
+                                  .studentInfo!.firstName ??
+                              "",
+                          style: appstyle(11, AppConst.kWhite, FontWeight.w700),
+                        ),
                         const SizedBox(height: 16),
-                        Text(widget.firstSectionList[3].blueCorner!.studentInfo!
-                                .firstName ??
-                            ""),
+                        ReusableText(
+                          text: widget.firstSectionList[3].blueCorner!
+                                  .studentInfo!.firstName ??
+                              "",
+                          style: appstyle(11, AppConst.kWhite, FontWeight.w700),
+                        ),
                       ],
                     ),
                   ),

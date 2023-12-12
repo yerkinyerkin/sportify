@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sportify/core/custom/app_text_style.dart';
+import 'package:sportify/core/custom/reusable_text.dart';
+import 'package:sportify/core/custom/utils/constants.dart';
 import 'package:sportify/screens/result/screens/grid/logic/data/models/grid_model.dart';
 
 class ThirdSectionGrid extends StatefulWidget {
@@ -26,16 +29,24 @@ class _ThirdSectionGridState extends State<ThirdSectionGrid> {
                     width: 220,
                     padding: const EdgeInsets.only(
                         left: 48, right: 48, top: 4, bottom: 4),
-                    color: Colors.grey,
+                    color: AppConst.kMaroon,
                     child: Column(
                       children: [
-                        Text(widget.thirdSectionList[6].redCorner?.studentInfo!
+                        ReusableText(
+                          text: widget.thirdSectionList[0].redCorner?.studentInfo!
                                 .firstName ??
-                            ""),
+                            "",
+                          style: appstyle(11, AppConst.kWhite, FontWeight.w700),
+                        ),
+                        
                         const SizedBox(height: 16),
-                        Text(widget.thirdSectionList[6].blueCorner?.studentInfo!
+                        ReusableText(
+                          text: widget.thirdSectionList[0].blueCorner?.studentInfo!
                                 .firstName ??
-                            ""),
+                            "",
+                          style: appstyle(11, AppConst.kWhite, FontWeight.w700),
+                        ),
+                        
                       ],
                     ),
                   ),

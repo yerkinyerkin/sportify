@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sportify/core/custom/app_text_style.dart';
+import 'package:sportify/core/custom/utils/constants.dart';
+import 'package:sportify/screens/result/screens/winners/screens/winners_screen.dart';
 import 'package:sportify/screens/result/screens/grid/screens/grid_screen.dart';
 
 class ResultScreen extends StatefulWidget {
@@ -25,24 +28,35 @@ class _ResultScreenState extends State<ResultScreen> {
         body: Column(
           children: [
             Container(
-              width: double.infinity,
-              color: Colors.grey,
-              padding: const EdgeInsets.all(16),
-              child: Text(widget.name),
-            ),
+                width: double.infinity,
+                color: AppConst.kMaroon,
+                padding: const EdgeInsets.all(16),
+                child: Center(
+                  child: Text(
+                    widget.name,
+                    textAlign: TextAlign.center,
+                    style: appstyle(15, AppConst.kWhite, FontWeight.w700),
+                  ),
+                )),
             TabBar(
-              tabs: [
-                Tab(text: 'Сетки'),
+              unselectedLabelStyle:
+                  appstyle(14, AppConst.kGrey, FontWeight.w700),
+              labelStyle: appstyle(14, AppConst.kMaroon, FontWeight.w700),
+              indicatorColor: AppConst.kMaroon,
+              tabs: const [
+                Tab(
+                  text: 'Сетки',
+                ),
                 Tab(text: 'Чемпионы'),
               ],
             ),
             Expanded(
               child: TabBarView(
                 children: [
-                  GridScreen(id: widget.id,),
-                  Container(
-                    child: Text('Content for SubTab 2 of Tab'),
+                  GridScreen(
+                    id: widget.id,
                   ),
+                  WinnersScreen(id: widget.id),
                 ],
               ),
             ),

@@ -41,7 +41,7 @@ RedCorner _$RedCornerFromJson(Map<String, dynamic> json) => RedCorner(
       studentInfo: json['student_info'] == null
           ? null
           : StudentInfo.fromJson(json['student_info'] as Map<String, dynamic>),
-      place: json['place'] as String?,
+      place: json['place'] as int?,
     );
 
 Map<String, dynamic> _$RedCornerToJson(RedCorner instance) => <String, dynamic>{
@@ -55,7 +55,7 @@ BlueCorner _$BlueCornerFromJson(Map<String, dynamic> json) => BlueCorner(
       studentInfo: json['student_info'] == null
           ? null
           : StudentInfo.fromJson(json['student_info'] as Map<String, dynamic>),
-      place: json['place'] as String?,
+      place: json['place'] as int?,
     );
 
 Map<String, dynamic> _$BlueCornerToJson(BlueCorner instance) =>

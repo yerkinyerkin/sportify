@@ -6,6 +6,7 @@ import 'package:sportify/core/hive/hive_init.dart';
 import 'package:sportify/screens/competition/logic/bloc/competition_bloc.dart';
 import 'package:sportify/screens/login/logic/bloc/login_bloc.dart';
 import 'package:sportify/screens/login/screens/login_screen.dart';
+import 'package:sportify/screens/result/screens/winners/logic/bloc/winners_bloc.dart';
 import 'package:sportify/screens/result/screens/grid/logic/bloc/grid_bloc.dart';
 
 Future<void> main() async {
@@ -31,6 +32,9 @@ class MyApp extends StatelessWidget {
           create: (_) => sl(),
         ),
         BlocProvider<GridBloc>(
+          create: (_) => sl(),
+        ),
+        BlocProvider<WinnersBloc>(
           create: (_) => sl(),
         ),
       ],
