@@ -14,7 +14,7 @@ class GridDataSourceImpl implements GridDataSource {
       'http://77.243.80.52:8000/api/v1/competitions/${id}/games/',
       queryParameters: {
         "age": age,
-        "weight": weight,
+        "weight": "44kg",
       },
     );
 

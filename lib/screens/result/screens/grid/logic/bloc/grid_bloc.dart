@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:sportify/screens/result/screens/grid/logic/data/models/grid_model.dart';
@@ -13,6 +15,7 @@ class GridBloc extends Bloc<GridEvent, GridState> {
       (event, emit) async {
         emit(GridLoading());
         try {
+          log(event.id);
           final GridModel response = await gridRepository.getGameParticipants(
               event.id, event.age, event.weight);
           emit(GridSuccess(response));

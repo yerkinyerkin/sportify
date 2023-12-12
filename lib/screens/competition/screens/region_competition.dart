@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sportify/core/custom/app_text_style.dart';
+import 'package:sportify/core/custom/reusable_text.dart';
+import 'package:sportify/core/custom/utils/constants.dart';
 import 'package:sportify/screens/competition/logic/data/models/regions_model.dart';
 import 'package:sportify/screens/competition/screens/region_into_screen.dart';
 
@@ -33,7 +36,7 @@ class _RegionCompetitionState extends State<RegionCompetition> {
                     },
                     child: Container(
                       padding: const EdgeInsets.all(8),
-                      child: Text(widget.listOfRegions[index].region),
+                      child:ReusableText(text: widget.listOfRegions[index].region, style: appstyle(13, AppConst.kWhite, FontWeight.w600)),
                     ),
                   );
                 })

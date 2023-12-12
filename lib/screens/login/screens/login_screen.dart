@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sportify/core/custom/custom_button.dart';
 import 'package:sportify/core/custom/custom_textfield.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sportify/screens/competition/screens/competition_screen.dart';
 import 'package:sportify/screens/login/logic/bloc/login_bloc.dart';
+import 'package:sportify/screens/main/screens/main_screen.dart';
 
 class LoginSceen extends StatefulWidget {
   const LoginSceen({super.key});
@@ -34,7 +34,7 @@ class _LoginSceenState extends State<LoginSceen> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const CompetitionScreen()));
+                    builder: (context) => MainScreen(index: 0,)));
           }
           if (state is LoginFailure) {
             switch (state.response.statusCode) {
