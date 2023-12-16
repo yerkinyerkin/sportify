@@ -37,10 +37,9 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         selectedLabelStyle: const TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.w500,
-          color: AppConst.kDarkPurple
-        ),
+            fontSize: 12,
+            fontWeight: FontWeight.w500,
+            color: AppConst.kDarkPurple),
         selectedIconTheme: const IconThemeData(color: AppConst.kDarkPurple),
         unselectedLabelStyle: const TextStyle(
           fontSize: 12,
@@ -49,20 +48,19 @@ class _MainScreenState extends State<MainScreen> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: "Главная",
-            
+            label: "Басты бет",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.newspaper),
-            label: "Новости",
+            label: "Жаңалықтар",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.bookmark),
-            label: "Избранное",
+            label: "Таңдаулы",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: "Профиль",
+            label: "Басқа",
           ),
         ],
         currentIndex: widget.index,
