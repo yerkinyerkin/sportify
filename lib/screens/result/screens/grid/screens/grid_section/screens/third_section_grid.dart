@@ -20,37 +20,108 @@ class _ThirdSectionGridState extends State<ThirdSectionGrid> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              color: Colors.white,
-              child: Column(
-                children: [
-                  const SizedBox(height: 150),
-                  Container(
-                    width: 220,
-                    padding: const EdgeInsets.only(
-                        left: 48, right: 48, top: 4, bottom: 4),
-                    color: AppConst.kMaroon,
-                    child: Column(
-                      children: [
-                        ReusableText(
-                          text: widget.thirdSectionList[0].redCorner?.studentInfo!
-                                .firstName ??
-                            "",
-                          style: appstyle(11, AppConst.kWhite, FontWeight.w700),
-                        ),
-                        
-                        const SizedBox(height: 16),
-                        ReusableText(
-                          text: widget.thirdSectionList[0].blueCorner?.studentInfo!
-                                .firstName ??
-                            "",
-                          style: appstyle(11, AppConst.kWhite, FontWeight.w700),
-                        ),
-                        
-                      ],
-                    ),
+            GestureDetector(
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    backgroundColor: AppConst.kDarkPurple,
+                    actions: <Widget>[
+                      const SizedBox(height: 12),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          if (widget.thirdSectionList[6].blueCornerWinner ==
+                              true)
+                            const Text(
+                              "Көк бұрыш жеңді",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white),
+                            ),
+                          if (widget.thirdSectionList[6].blueCornerWinner ==
+                              false)
+                            const Text(
+                              "Қызыл бұрыш жеңді",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white),
+                            ),
+                          if (widget.thirdSectionList[6].blueCornerWinner ==
+                                  false &&
+                              widget.thirdSectionList[6].redCornerWinner ==
+                                  false)
+                            const Text(
+                              "Бой басталмады",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white),
+                            ),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              height: 100,
+                              width: double.infinity,
+                              decoration:
+                                  BoxDecoration(color: Color(0xffff0d0d)),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 16,
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: 100,
+                              width: double.infinity,
+                              decoration:
+                                  BoxDecoration(color: Color(0xff0034ed)),
+                            ),
+                          )
+                        ],
+                      )
+                    ],
                   ),
-                ],
+                );
+              },
+              child: Container(
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 150),
+                    Container(
+                      width: 220,
+                      padding: const EdgeInsets.only(
+                          left: 48, right: 48, top: 4, bottom: 4),
+                      color: AppConst.kMaroon,
+                      child: Column(
+                        children: [
+                          ReusableText(
+                            text: widget.thirdSectionList[6].redCorner
+                                    ?.studentInfo!.firstName ??
+                                "",
+                            style:
+                                appstyle(11, AppConst.kWhite, FontWeight.w700),
+                          ),
+                          const SizedBox(height: 16),
+                          ReusableText(
+                            text: widget.thirdSectionList[6].blueCorner
+                                    ?.studentInfo!.firstName ??
+                                "",
+                            style:
+                                appstyle(11, AppConst.kWhite, FontWeight.w700),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

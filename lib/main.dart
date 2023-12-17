@@ -5,7 +5,7 @@ import 'package:sportify/core/getIt/injection_container.dart';
 import 'package:sportify/core/hive/hive_init.dart';
 import 'package:sportify/screens/competition/logic/bloc/competition_bloc.dart';
 import 'package:sportify/screens/login/logic/bloc/login_bloc.dart';
-import 'package:sportify/screens/login/screens/login_screen.dart';
+import 'package:sportify/screens/main/screens/main_screen.dart';
 import 'package:sportify/screens/result/screens/winners/logic/bloc/winners_bloc.dart';
 import 'package:sportify/screens/result/screens/grid/logic/bloc/grid_bloc.dart';
 
@@ -44,7 +44,9 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const LoginSceen(),
+        home: MainScreen(
+          index: 3,
+        ),
       ),
     );
   }

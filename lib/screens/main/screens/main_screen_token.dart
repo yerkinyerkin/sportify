@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sportify/core/custom/utils/constants.dart';
+import 'package:sportify/screens/add_student/screens/add_student_screen.dart';
 import 'package:sportify/screens/competition/screens/competition_screen.dart';
 import 'package:sportify/screens/other/screens/other_screen.dart';
-import 'package:sportify/screens/profile/screens/profile_screen.dart';
+import 'package:sportify/screens/students/screens/students_screen.dart';
 
 // ignore: must_be_immutable
-class MainScreen extends StatefulWidget {
+class MainScreenToken extends StatefulWidget {
   int index;
-  MainScreen({super.key, required this.index});
+  MainScreenToken({super.key, required this.index});
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<MainScreenToken> createState() => _MainScreenTokenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenTokenState extends State<MainScreenToken> {
   final List<Widget> _widgetOptions = <Widget>[
     const CompetitionScreen(),
     const Center(
       child: Text("News"),
     ),
-    const Center(
-      child: Text("Favorites"),
-    ),
-    const OtherScreen(),
+    const AddStudentScreen(),
+    StudentsScreen(),
+    const OtherScreenToken(),
   ];
 
   void _onItemTapped(int index) {
@@ -57,8 +56,15 @@ class _MainScreenState extends State<MainScreen> {
             label: "Жаңалықтар",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.bookmark),
-            label: "Таңдаулы",
+            icon: Icon(
+              Icons.add_outlined,
+              size: 35,
+            ),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.people),
+            label: "Шәкірттер",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

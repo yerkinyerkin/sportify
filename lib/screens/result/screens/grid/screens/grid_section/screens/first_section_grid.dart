@@ -25,99 +25,405 @@ class _FirstSectionGridState extends State<FirstSectionGrid> {
               child: Column(
                 children: [
                   const SizedBox(height: 16),
-                  Container(
-                    width: 220,
-                    padding: const EdgeInsets.only(
-                        left: 48, right: 48, top: 4, bottom: 4),
-                    color: AppConst.kMaroon,
-                    child: Column(
-                      children: [
-                        ReusableText(
-                            text: widget.firstSectionList[0].redCorner!
+                  GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          backgroundColor: AppConst.kDarkPurple,
+                          actions: <Widget>[
+                            const SizedBox(height: 12),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                if (widget
+                                        .firstSectionList[0].blueCornerWinner ==
+                                    true)
+                                  const Text(
+                                    "Көк бұрыш жеңді",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white),
+                                  ),
+                                if (widget
+                                        .firstSectionList[0].blueCornerWinner ==
+                                    false)
+                                  const Text(
+                                    "Қызыл бұрыш жеңді",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white),
+                                  ),
+                                if (widget.firstSectionList[0]
+                                            .blueCornerWinner ==
+                                        false &&
+                                    widget.firstSectionList[0]
+                                            .redCornerWinner ==
+                                        false)
+                                  const Text(
+                                    "Бой басталмады",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white),
+                                  ),
+                              ],
+                            ),
+                            const SizedBox(height: 12),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    height: 100,
+                                    width: double.infinity,
+                                    decoration:
+                                        BoxDecoration(color: Color(0xffff0d0d)),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 16,
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    height: 100,
+                                    width: double.infinity,
+                                    decoration:
+                                        BoxDecoration(color: Color(0xff0034ed)),
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: 220,
+                      padding: const EdgeInsets.only(
+                          left: 48, right: 48, top: 4, bottom: 4),
+                      color: AppConst.kMaroon,
+                      child: Column(
+                        children: [
+                          ReusableText(
+                              text: widget.firstSectionList[0].redCorner!
+                                      .studentInfo!.firstName ??
+                                  "",
+                              style: appstyle(
+                                  11, AppConst.kWhite, FontWeight.w700)),
+                          const SizedBox(height: 16),
+                          ReusableText(
+                              text: widget.firstSectionList[0].blueCorner!
+                                      .studentInfo!.firstName ??
+                                  "",
+                              style: appstyle(
+                                  11, AppConst.kWhite, FontWeight.w700)),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          backgroundColor: AppConst.kDarkPurple,
+                          actions: <Widget>[
+                            const SizedBox(height: 12),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                if (widget
+                                        .firstSectionList[1].blueCornerWinner ==
+                                    true)
+                                  const Text(
+                                    "Көк бұрыш жеңді",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white),
+                                  ),
+                                if (widget
+                                        .firstSectionList[1].blueCornerWinner ==
+                                    false)
+                                  const Text(
+                                    "Қызыл бұрыш жеңді",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white),
+                                  ),
+                                if (widget.firstSectionList[1]
+                                            .blueCornerWinner ==
+                                        false &&
+                                    widget.firstSectionList[1]
+                                            .redCornerWinner ==
+                                        false)
+                                  const Text(
+                                    "Бой басталмады",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white),
+                                  ),
+                              ],
+                            ),
+                            const SizedBox(height: 12),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    height: 100,
+                                    width: double.infinity,
+                                    decoration:
+                                        BoxDecoration(color: Color(0xffff0d0d)),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 16,
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    height: 100,
+                                    width: double.infinity,
+                                    decoration:
+                                        BoxDecoration(color: Color(0xff0034ed)),
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: 220,
+                      padding: const EdgeInsets.only(
+                          left: 48, right: 48, top: 4, bottom: 4),
+                      color: AppConst.kMaroon,
+                      child: Column(
+                        children: [
+                          ReusableText(
+                            text: widget.firstSectionList[1].redCorner!
                                     .studentInfo!.firstName ??
                                 "",
                             style:
-                                appstyle(11, AppConst.kWhite, FontWeight.w700)),
-                        const SizedBox(height: 16),
-                        ReusableText(
-                            text: widget.firstSectionList[0].blueCorner!
+                                appstyle(11, AppConst.kWhite, FontWeight.w700),
+                          ),
+                          const SizedBox(height: 16),
+                          ReusableText(
+                            text: widget.firstSectionList[1].blueCorner!
                                     .studentInfo!.firstName ??
                                 "",
                             style:
-                                appstyle(11, AppConst.kWhite, FontWeight.w700)),
-                      ],
+                                appstyle(11, AppConst.kWhite, FontWeight.w700),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   const SizedBox(height: 24),
-                  Container(
-                    width: 220,
-                    padding: const EdgeInsets.only(
-                        left: 48, right: 48, top: 4, bottom: 4),
-                    color: AppConst.kMaroon,
-                    child: Column(
-                      children: [
-                        ReusableText(
-                          text: widget.firstSectionList[1].redCorner!
-                                  .studentInfo!.firstName ??
-                              "",
-                          style: appstyle(11, AppConst.kWhite, FontWeight.w700),
+                  GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          backgroundColor: AppConst.kDarkPurple,
+                          actions: <Widget>[
+                            const SizedBox(height: 12),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                if (widget
+                                        .firstSectionList[2].blueCornerWinner ==
+                                    true)
+                                  const Text(
+                                    "Көк бұрыш жеңді",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white),
+                                  ),
+                                if (widget
+                                        .firstSectionList[2].blueCornerWinner ==
+                                    false)
+                                  const Text(
+                                    "Қызыл бұрыш жеңді",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white),
+                                  ),
+                                if (widget.firstSectionList[2]
+                                            .blueCornerWinner ==
+                                        false &&
+                                    widget.firstSectionList[2]
+                                            .redCornerWinner ==
+                                        false)
+                                  const Text(
+                                    "Бой басталмады",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white),
+                                  ),
+                              ],
+                            ),
+                            const SizedBox(height: 12),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    height: 100,
+                                    width: double.infinity,
+                                    decoration:
+                                        BoxDecoration(color: Color(0xffff0d0d)),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 16,
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    height: 100,
+                                    width: double.infinity,
+                                    decoration:
+                                        BoxDecoration(color: Color(0xff0034ed)),
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
                         ),
-                        const SizedBox(height: 16),
-                        ReusableText(
-                          text: widget.firstSectionList[1].blueCorner!
-                                  .studentInfo!.firstName ??
-                              "",
-                          style: appstyle(11, AppConst.kWhite, FontWeight.w700),
-                        ),
-                      ],
+                      );
+                    },
+                    child: Container(
+                      width: 220,
+                      padding: const EdgeInsets.only(
+                          left: 48, right: 48, top: 4, bottom: 4),
+                      color: AppConst.kMaroon,
+                      child: Column(
+                        children: [
+                          ReusableText(
+                            text: widget.firstSectionList[2].redCorner!
+                                    .studentInfo!.firstName ??
+                                "",
+                            style:
+                                appstyle(11, AppConst.kWhite, FontWeight.w700),
+                          ),
+                          const SizedBox(height: 16),
+                          ReusableText(
+                            text: widget.firstSectionList[2].blueCorner!
+                                    .studentInfo!.firstName ??
+                                "",
+                            style:
+                                appstyle(11, AppConst.kWhite, FontWeight.w700),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   const SizedBox(height: 24),
-                  Container(
-                    width: 220,
-                    padding: const EdgeInsets.only(
-                        left: 48, right: 48, top: 4, bottom: 4),
-                    color: AppConst.kMaroon,
-                    child: Column(
-                      children: [
-                        ReusableText(
-                          text: widget.firstSectionList[2].redCorner!
-                                  .studentInfo!.firstName ??
-                              "",
-                          style: appstyle(11, AppConst.kWhite, FontWeight.w700),
+                  GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          backgroundColor: AppConst.kDarkPurple,
+                          actions: <Widget>[
+                            const SizedBox(height: 12),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                if (widget
+                                        .firstSectionList[3].blueCornerWinner ==
+                                    true)
+                                  const Text(
+                                    "Көк бұрыш жеңді",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white),
+                                  ),
+                                if (widget
+                                        .firstSectionList[3].blueCornerWinner ==
+                                    false)
+                                  const Text(
+                                    "Қызыл бұрыш жеңді",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white),
+                                  ),
+                                if (widget.firstSectionList[3]
+                                            .blueCornerWinner ==
+                                        false &&
+                                    widget.firstSectionList[3]
+                                            .redCornerWinner ==
+                                        false)
+                                  const Text(
+                                    "Бой басталмады",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white),
+                                  ),
+                              ],
+                            ),
+                            const SizedBox(height: 12),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    height: 100,
+                                    width: double.infinity,
+                                    decoration:
+                                        BoxDecoration(color: Color(0xffff0d0d)),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 16,
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    height: 100,
+                                    width: double.infinity,
+                                    decoration:
+                                        BoxDecoration(color: Color(0xff0034ed)),
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
                         ),
-                        const SizedBox(height: 16),
-                        ReusableText(
-                          text: widget.firstSectionList[2].blueCorner!
-                                  .studentInfo!.firstName ??
-                              "",
-                          style: appstyle(11, AppConst.kWhite, FontWeight.w700),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-                  Container(
-                    width: 220,
-                    padding: const EdgeInsets.only(
-                        left: 48, right: 48, top: 4, bottom: 4),
-                    color: AppConst.kMaroon,
-                    child: Column(
-                      children: [
-                        ReusableText(
-                          text: widget.firstSectionList[3].redCorner!
-                                  .studentInfo!.firstName ??
-                              "",
-                          style: appstyle(11, AppConst.kWhite, FontWeight.w700),
-                        ),
-                        const SizedBox(height: 16),
-                        ReusableText(
-                          text: widget.firstSectionList[3].blueCorner!
-                                  .studentInfo!.firstName ??
-                              "",
-                          style: appstyle(11, AppConst.kWhite, FontWeight.w700),
-                        ),
-                      ],
+                      );
+                    },
+                    child: Container(
+                      width: 220,
+                      padding: const EdgeInsets.only(
+                          left: 48, right: 48, top: 4, bottom: 4),
+                      color: AppConst.kMaroon,
+                      child: Column(
+                        children: [
+                          ReusableText(
+                            text: widget.firstSectionList[3].redCorner!
+                                    .studentInfo!.firstName ??
+                                "",
+                            style:
+                                appstyle(11, AppConst.kWhite, FontWeight.w700),
+                          ),
+                          const SizedBox(height: 16),
+                          ReusableText(
+                            text: widget.firstSectionList[3].blueCorner!
+                                    .studentInfo!.firstName ??
+                                "",
+                            style:
+                                appstyle(11, AppConst.kWhite, FontWeight.w700),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],

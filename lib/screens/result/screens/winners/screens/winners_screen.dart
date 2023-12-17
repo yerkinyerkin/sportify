@@ -5,6 +5,7 @@ import 'package:sportify/core/custom/height_spacer.dart';
 import 'package:sportify/core/custom/reusable_text.dart';
 import 'package:sportify/core/custom/utils/constants.dart';
 import 'package:sportify/core/getIt/injection_container.dart';
+import 'package:sportify/screens/profile/screens/profile_screen.dart';
 import 'package:sportify/screens/result/screens/winners/logic/bloc/winners_bloc.dart';
 import 'package:sportify/screens/result/screens/winners/widgets/winners_list_tile.dart';
 import 'package:sportify/screens/result/screens/grid/widgets/years_container.dart';
@@ -103,11 +104,25 @@ class _WinnersScreenState extends State<WinnersScreen> {
                                   itemBuilder: (context, index) {
                                     return Column(
                                       children: [
-                                        WinnersListTile(
-                                          fullName:
-                                              "${state.response.data[index].studentInfo.firstName} ${state.response.data[index].studentInfo.lastName}",
-                                          clubName: state.response.data[index]
-                                              .studentInfo.club.name,
+                                        GestureDetector(
+                                          onTap: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        ProfileScreen(
+                                                          studentInfo: state
+                                                              .response
+                                                              .data[index]
+                                                              .studentInfo,
+                                                        )));
+                                          },
+                                          child: WinnersListTile(
+                                            fullName:
+                                                "${state.response.data[index].studentInfo.firstName} ${state.response.data[index].studentInfo.lastName}",
+                                            clubName: state.response.data[index]
+                                                .studentInfo.club.name,
+                                          ),
                                         ),
                                         const Padding(
                                           padding: EdgeInsets.symmetric(
