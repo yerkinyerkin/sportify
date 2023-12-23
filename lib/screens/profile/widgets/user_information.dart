@@ -3,12 +3,17 @@ import 'package:sportify/core/custom/app_text_style.dart';
 import 'package:sportify/core/custom/height_spacer.dart';
 import 'package:sportify/core/custom/reusable_text.dart';
 import 'package:sportify/core/custom/utils/constants.dart';
-import 'package:sportify/screens/result/screens/winners/logic/data/models/winners_model.dart';
+import 'package:sportify/screens/profile/logic/data/models/profile_model.dart';
 
-class UserInformation extends StatelessWidget {
-  final StudentInfo? studentInfo;
-  const UserInformation({super.key, this.studentInfo});
+class UserInformation extends StatefulWidget {
+  final ProfileModel? profileData;
+  const UserInformation({super.key, this.profileData});
 
+  @override
+  State<UserInformation> createState() => _UserInformationState();
+}
+
+class _UserInformationState extends State<UserInformation> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,10 +25,10 @@ class UserInformation extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ReusableText(
-                  text: studentInfo!.firstName,
+                  text: "${widget.profileData!.firstName}",
                   style: appstyle(14, AppConst.kWhite, FontWeight.w700)),
               ReusableText(
-                  text: studentInfo!.lastName,
+                  text: "${widget.profileData!.lastName}",
                   style: appstyle(24, AppConst.kWhite, FontWeight.w700)),
               const HeightSpacer(height: 15),
               ReusableText(
@@ -45,7 +50,7 @@ class UserInformation extends StatelessWidget {
                               appstyle(10, AppConst.kWhite, FontWeight.w400)),
                       const HeightSpacer(height: 10),
                       ReusableText(
-                          text: studentInfo!.club.name,
+                          text: "clubname",
                           style:
                               appstyle(10, AppConst.kWhite, FontWeight.w700)),
                       ReusableText(
@@ -58,7 +63,7 @@ class UserInformation extends StatelessWidget {
                           style:
                               appstyle(10, AppConst.kWhite, FontWeight.w700)),
                       ReusableText(
-                          text: studentInfo!.coach.firstName,
+                          text: "coachname",
                           style:
                               appstyle(10, AppConst.kWhite, FontWeight.w400)),
                     ],

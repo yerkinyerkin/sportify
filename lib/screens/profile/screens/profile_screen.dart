@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sportify/core/custom/app_text_style.dart';
 import 'package:sportify/core/custom/utils/constants.dart';
+import 'package:sportify/core/getIt/injection_container.dart';
+import 'package:sportify/screens/profile/logic/bloc/profile_bloc.dart';
 import 'package:sportify/screens/profile/widgets/competitions.dart';
 import 'package:sportify/screens/profile/widgets/last_fights.dart';
 import 'package:sportify/screens/profile/widgets/user_information.dart';
-import 'package:sportify/screens/result/screens/winners/logic/data/models/winners_model.dart';
 
 class ProfileScreen extends StatefulWidget {
   final String? id;
-  final StudentInfo? studentInfo;
-  final int? place;
-  const ProfileScreen({super.key, this.id, this.studentInfo, this.place});
+
+  const ProfileScreen({super.key, this.id});
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -62,34 +63,49 @@ class _ProfileScreenState extends State<ProfileScreen> {
           iconTheme: const IconThemeData(color: Colors.white),
           backgroundColor: AppConst.kDarkPurple,
         ),
-        body: Column(
-          children: [
-            UserInformation(
-              studentInfo: widget.studentInfo,
-            ),
-            TabBar(
-              tabAlignment: TabAlignment.center,
-              dividerColor: AppConst.kDarkPurple,
-              indicatorColor: AppConst.kWhite,
-              unselectedLabelStyle:
-                  appstyle(12, AppConst.kGrey, FontWeight.w700),
-              labelStyle: appstyle(12, AppConst.kWhite, FontWeight.w700),
-              tabs: const [
-                Tab(
-                  text: 'Последние бои',
-                ),
-                Tab(text: 'Результаты в соревнованиях'),
-              ],
-            ),
-            const Expanded(
-              child: TabBarView(
-                children: [
-                  LastFights(),
-                  CompetitionsProfile(),
-                ],
-              ),
-            ),
-          ],
+        body: BlocProvider(
+          create: (context) =>
+              sl<ProfileBloc>()..add(GetProfile(widget.id ?? "")),
+          child: BlocBuilder<ProfileBloc, ProfileState>(
+            builder: (context, state) {
+              if (state is ProfileLoading) {
+                return const CircularProgressIndicator();
+              }
+              if (state is ProfileSuccess) {
+                return Column(
+                  children: [
+                    UserInformation(
+                      profileData: state.response,
+                    ),
+                    TabBar(
+                      tabAlignment: TabAlignment.center,
+                      dividerColor: AppConst.kDarkPurple,
+                      indicatorColor: AppConst.kWhite,
+                      unselectedLabelStyle:
+                          appstyle(12, AppConst.kGrey, FontWeight.w700),
+                      labelStyle:
+                          appstyle(12, AppConst.kWhite, FontWeight.w700),
+                      tabs: const [
+                        Tab(
+                          text: 'Последние бои',
+                        ),
+                        Tab(text: 'Результаты в соревнованиях'),
+                      ],
+                    ),
+                    const Expanded(
+                      child: TabBarView(
+                        children: [
+                          LastFights(),
+                          CompetitionsProfile(),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              }
+              return const Offstage();
+            },
+          ),
         ),
       ),
     );
