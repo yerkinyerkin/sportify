@@ -5,6 +5,7 @@ import 'package:sportify/core/custom/reusable_text.dart';
 import 'package:sportify/core/custom/utils/constants.dart';
 import 'package:sportify/core/getIt/injection_container.dart';
 import 'package:sportify/screens/students/logic/bloc/registered_students_bloc.dart';
+import 'package:sportify/screens/students/screens/competition_students/screens/competition_st_screen.dart';
 
 class RegisteredStudentsScreen extends StatefulWidget {
   final String id;
@@ -17,11 +18,15 @@ class RegisteredStudentsScreen extends StatefulWidget {
 }
 
 class _ResultScreenState extends State<RegisteredStudentsScreen> {
+  late PersistentBottomSheetController controller;
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        key: _scaffoldKey,
         appBar: AppBar(
             iconTheme: const IconThemeData(
               color: Colors.white,
@@ -42,7 +47,8 @@ class _ResultScreenState extends State<RegisteredStudentsScreen> {
                 ));
               }
               if (state is RegisteredStudentsSuccess) {
-                return Column(
+                return state.response.data.isNotEmpty?
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
@@ -83,12 +89,12 @@ class _ResultScreenState extends State<RegisteredStudentsScreen> {
                                         leading: Container(
                                           width: 40,
                                           height: 40,
-                                          decoration: const BoxDecoration(
+                                          decoration: BoxDecoration(
                                               color: AppConst.kGrey,
                                               shape: BoxShape.circle,
                                               image: DecorationImage(
                                                   image: NetworkImage(
-                                                    "https://picsum.photos/250?image=9",
+                                                    "http://77.243.80.52:8000${state.response.data[index].studentInfo.image}",
                                                   ),
                                                   fit: BoxFit.fill)),
                                         ),
@@ -98,16 +104,25 @@ class _ResultScreenState extends State<RegisteredStudentsScreen> {
                                           style: appstyle(12, AppConst.kWhite,
                                               FontWeight.w600),
                                         ),
-                                        subtitle: ReusableText(
-                                            text:
-                                                "${state.response.data[index].studentInfo.club.name}",
-                                            style: appstyle(
-                                                9,
-                                                const Color(0xFFC0C0C0),
-                                                FontWeight.w400)),
+                                        subtitle: Row(
+                                          children: [
+                                            ReusableText(
+                                                text:
+                                                    "${state.response.data[index].studentInfo.club.name} ",
+                                                style: appstyle(
+                                                    9,
+                                                    const Color(0xFFC0C0C0),
+                                                    FontWeight.w400)),
+                                            Image.network(
+                                              'http://77.243.80.52:8000${state.response.data[index].studentInfo.club.logo}',
+                                              width: 15,
+                                              height: 15,
+                                            ),
+                                          ],
+                                        ),
                                         trailing: ReusableText(
                                           text:
-                                              '${state.response.data[index].studentInfo.location}',
+                                              '${state.response.data[index].ageCategory} ${state.response.data[index].weightCategory}',
                                           style: appstyle(12, AppConst.kWhite,
                                               FontWeight.w700),
                                         ),
@@ -128,7 +143,7 @@ class _ResultScreenState extends State<RegisteredStudentsScreen> {
                       ),
                     ),
                   ],
-                );
+                ):const Center(child: Text("Data is Empty"),);
               }
               if (state is RegisteredStudentsFailure) {
                 return Center(
@@ -140,32 +155,16 @@ class _ResultScreenState extends State<RegisteredStudentsScreen> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-            shape: const CircleBorder(), 
+            shape: const CircleBorder(),
             backgroundColor: AppConst.kMaroon,
             child: const Icon(Icons.add, color: Colors.white, size: 28),
             onPressed: () {
-              _showAlertDialog(context);
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => CompetitionStScreen(id: widget.id,)));
             }),
       ),
     );
   }
-  void _showAlertDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Title'),
-          content: Text('Subtitle'),
-          actions:[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); 
-              },
-              child: Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
-  }
+
+  
 }

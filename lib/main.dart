@@ -10,6 +10,7 @@ import 'package:sportify/screens/main/screens/main_screen.dart';
 import 'package:sportify/screens/result/screens/winners/logic/bloc/winners_bloc.dart';
 import 'package:sportify/screens/result/screens/grid/logic/bloc/grid_bloc.dart';
 import 'package:sportify/screens/students/logic/bloc/registered_students_bloc.dart';
+import 'package:sportify/screens/students/screens/competition_students/logic/bloc/competition_st_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,6 +44,9 @@ class MyApp extends StatelessWidget {
           create: (_) => sl(),
         ),
         BlocProvider<RegisteredStudentsBloc>(
+          create: (_) => sl(),
+        ),
+        BlocProvider<CompetitionStBloc>(
           create: (_) => sl(),
         ),
       ],

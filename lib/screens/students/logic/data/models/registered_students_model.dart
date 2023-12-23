@@ -21,12 +21,16 @@ class Data {
   String id;
   @JsonKey(name: 'student_info')
   StudentInfo studentInfo;
-  int place;
+  @JsonKey(name: 'age_category')
+  String ageCategory;
+  @JsonKey(name: 'weight_category')
+  String weightCategory;
 
   Data({
     required this.id,
     required this.studentInfo,
-    required this.place,
+    required this.ageCategory,
+    required this.weightCategory,
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
@@ -45,16 +49,18 @@ class StudentInfo {
   Club club;
   String location;
   Coach coach;
+  @JsonKey(name: 'date_of_birth')
+  String dateOfBirth;
 
-  StudentInfo({
-    required this.id,
-    required this.firstName,
-    required this.lastName,
-    required this.image,
-    required this.club,
-    required this.location,
-    required this.coach,
-  });
+  StudentInfo(
+      {required this.id,
+      required this.firstName,
+      required this.lastName,
+      required this.image,
+      required this.club,
+      required this.location,
+      required this.coach,
+      required this.dateOfBirth});
 
   factory StudentInfo.fromJson(Map<String, dynamic> json) =>
       _$StudentInfoFromJson(json);

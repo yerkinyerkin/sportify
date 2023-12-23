@@ -1,41 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'registered_students_model.dart';
+part of 'competition_st_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-RegisteredStudentsModel _$RegisteredStudentsModelFromJson(
-        Map<String, dynamic> json) =>
-    RegisteredStudentsModel(
+CompetitionStModel _$CompetitionStModelFromJson(Map<String, dynamic> json) =>
+    CompetitionStModel(
       data: (json['data'] as List<dynamic>)
           .map((e) => Data.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$RegisteredStudentsModelToJson(
-        RegisteredStudentsModel instance) =>
+Map<String, dynamic> _$CompetitionStModelToJson(CompetitionStModel instance) =>
     <String, dynamic>{
       'data': instance.data,
     };
 
 Data _$DataFromJson(Map<String, dynamic> json) => Data(
-      id: json['id'] as String,
-      studentInfo:
-          StudentInfo.fromJson(json['student_info'] as Map<String, dynamic>),
-      ageCategory: json['age_category'] as String,
-      weightCategory: json['weight_category'] as String,
-    );
-
-Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
-      'id': instance.id,
-      'student_info': instance.studentInfo,
-      'age_category': instance.ageCategory,
-      'weight_category': instance.weightCategory,
-    };
-
-StudentInfo _$StudentInfoFromJson(Map<String, dynamic> json) => StudentInfo(
       id: json['id'] as String,
       firstName: json['first_name'] as String,
       lastName: json['last_name'] as String,
@@ -43,11 +26,11 @@ StudentInfo _$StudentInfoFromJson(Map<String, dynamic> json) => StudentInfo(
       club: Club.fromJson(json['club'] as Map<String, dynamic>),
       location: json['location'] as String,
       coach: Coach.fromJson(json['coach'] as Map<String, dynamic>),
-      dateOfBirth: json['date_of_birth'] as String,
+      dateOfBirth: DateTime.parse(json['date_of_birth'] as String),
+      registered: json['registered'] as bool,
     );
 
-Map<String, dynamic> _$StudentInfoToJson(StudentInfo instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'id': instance.id,
       'first_name': instance.firstName,
       'last_name': instance.lastName,
@@ -55,7 +38,8 @@ Map<String, dynamic> _$StudentInfoToJson(StudentInfo instance) =>
       'club': instance.club,
       'location': instance.location,
       'coach': instance.coach,
-      'date_of_birth': instance.dateOfBirth,
+      'date_of_birth': instance.dateOfBirth.toIso8601String(),
+      'registered': instance.registered,
     };
 
 Club _$ClubFromJson(Map<String, dynamic> json) => Club(
