@@ -7,8 +7,10 @@ import 'package:sportify/screens/profile/widgets/user_information.dart';
 import 'package:sportify/screens/result/screens/winners/logic/data/models/winners_model.dart';
 
 class ProfileScreen extends StatefulWidget {
+  final String? id;
   final StudentInfo? studentInfo;
-  const ProfileScreen({super.key, this.studentInfo});
+  final int? place;
+  const ProfileScreen({super.key, this.id, this.studentInfo, this.place});
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -57,7 +59,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           //   ],
           // ),
           automaticallyImplyLeading: true,
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
           backgroundColor: AppConst.kDarkPurple,
         ),
         body: Column(
