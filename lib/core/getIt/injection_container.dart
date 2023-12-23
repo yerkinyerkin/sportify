@@ -1,4 +1,7 @@
 import 'package:get_it/get_it.dart';
+import 'package:sportify/screens/add_student/logic/bloc%20/add_student_bloc.dart';
+import 'package:sportify/screens/add_student/logic/data/datasources/add_student_datasource.dart';
+import 'package:sportify/screens/add_student/logic/data/repositories/add_student_repository.dart';
 import 'package:sportify/screens/competition/logic/bloc/competition_bloc.dart';
 import 'package:sportify/screens/competition/logic/data/datasources/competition_datasource.dart';
 import 'package:sportify/screens/competition/logic/data/repositories/competition_repository.dart';
@@ -11,6 +14,9 @@ import 'package:sportify/screens/result/screens/winners/logic/data/repositories%
 import 'package:sportify/screens/result/screens/grid/logic/bloc/grid_bloc.dart';
 import 'package:sportify/screens/result/screens/grid/logic/data/datasources/grid_datasource.dart';
 import 'package:sportify/screens/result/screens/grid/logic/data/repositories/grid_repository.dart';
+import 'package:sportify/screens/students/logic/bloc/registered_students_bloc.dart';
+import 'package:sportify/screens/students/logic/data/datasources/registered_students_datasource.dart';
+import 'package:sportify/screens/students/logic/data/repositories%20copy/registered_students_repository.dart';
 
 var sl = GetIt.instance;
 
@@ -40,4 +46,16 @@ void initGetIt() async {
   sl.registerLazySingleton<WinnersRepository>(() => WinnersRepositoryImpl(sl()));
 
   sl.registerLazySingleton<WinnersDataSource>(() => WinnersDataSourceImpl());
+
+  sl.registerFactory<AddStudentBloc>(() => AddStudentBloc(sl()));
+
+  sl.registerLazySingleton<AddStudentRepository>(() => AddStudentRepositoryImpl(sl()));
+
+  sl.registerLazySingleton<AddStudentDataSource>(() => AddStudentDataSourceImpl());
+
+  sl.registerFactory<RegisteredStudentsBloc>(() => RegisteredStudentsBloc(sl()));
+
+  sl.registerLazySingleton<RegisteredStRepository>(() => RegisteredStRepositoryImpl(sl()));
+
+  sl.registerLazySingleton<RegisteredStDataSource>(() => RegisteredStDataSourceImpl());
 }

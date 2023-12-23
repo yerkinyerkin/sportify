@@ -3,11 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sportify/core/getIt/injection_container.dart';
 import 'package:sportify/core/hive/hive_init.dart';
+import 'package:sportify/screens/add_student/logic/bloc%20/add_student_bloc.dart';
 import 'package:sportify/screens/competition/logic/bloc/competition_bloc.dart';
 import 'package:sportify/screens/login/logic/bloc/login_bloc.dart';
 import 'package:sportify/screens/main/screens/main_screen.dart';
 import 'package:sportify/screens/result/screens/winners/logic/bloc/winners_bloc.dart';
 import 'package:sportify/screens/result/screens/grid/logic/bloc/grid_bloc.dart';
+import 'package:sportify/screens/students/logic/bloc/registered_students_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,6 +37,12 @@ class MyApp extends StatelessWidget {
           create: (_) => sl(),
         ),
         BlocProvider<WinnersBloc>(
+          create: (_) => sl(),
+        ),
+        BlocProvider<AddStudentBloc>(
+          create: (_) => sl(),
+        ),
+        BlocProvider<RegisteredStudentsBloc>(
           create: (_) => sl(),
         ),
       ],
