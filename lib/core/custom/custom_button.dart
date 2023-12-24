@@ -9,6 +9,7 @@ class CustomButton extends StatelessWidget {
   Color? borderColor;
   Color? textColor;
   double? heigtButton;
+  double? borderRadius;
 
   CustomButton({
     Key? key,
@@ -18,6 +19,7 @@ class CustomButton extends StatelessWidget {
     this.borderColor,
     this.textColor,
     this.heigtButton,
+    this.borderRadius,
   }) : super(key: key);
 
   @override
@@ -37,7 +39,7 @@ class CustomButton extends StatelessWidget {
                   width: 1.0,
                   color: borderColor!,
                 ):BorderSide.none,
-          borderRadius: BorderRadius.circular(0.0),
+          borderRadius: BorderRadius.circular(borderRadius?? 0.0),
            // <-- Radius
         ),
         

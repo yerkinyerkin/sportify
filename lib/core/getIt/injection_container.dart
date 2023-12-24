@@ -20,6 +20,10 @@ import 'package:sportify/screens/result/screens/grid/logic/data/repositories/gri
 import 'package:sportify/screens/students/logic/bloc/registered_students_bloc.dart';
 import 'package:sportify/screens/students/logic/data/datasources/registered_students_datasource.dart';
 import 'package:sportify/screens/students/logic/data/repositories%20copy/registered_students_repository.dart';
+import 'package:sportify/screens/students/screens/competition_students/logic/bloc/competition_st_bloc.dart';
+import 'package:sportify/screens/students/screens/competition_students/logic/data/datasources/competition_st_datasource.dart';
+import 'package:sportify/screens/students/screens/competition_students/logic/data/repositories%20copy/competition_st_repository.dart';
+
 
 var sl = GetIt.instance;
 
@@ -74,4 +78,10 @@ void initGetIt() async {
       () => ProfileRepositoryImpl(sl()));
 
   sl.registerLazySingleton<ProfileDataSource>(() => ProfileDataSourceImpl());
+
+  sl.registerFactory<CompetitionStBloc>(() => CompetitionStBloc(sl()));
+
+  sl.registerLazySingleton<CompetitionStRepository>(() => CompetitionStRepositoryImpl(sl()));
+
+  sl.registerLazySingleton<CompetitionStDataSource>(() => CompetitionStDataSourceImpl());
 }
