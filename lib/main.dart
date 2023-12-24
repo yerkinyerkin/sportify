@@ -7,6 +7,7 @@ import 'package:sportify/screens/add_student/logic/bloc%20/add_student_bloc.dart
 import 'package:sportify/screens/competition/logic/bloc/competition_bloc.dart';
 import 'package:sportify/screens/login/logic/bloc/login_bloc.dart';
 import 'package:sportify/screens/main/screens/main_screen.dart';
+import 'package:sportify/screens/profile/logic/bloc/profile_bloc.dart';
 import 'package:sportify/screens/result/screens/winners/logic/bloc/winners_bloc.dart';
 import 'package:sportify/screens/result/screens/grid/logic/bloc/grid_bloc.dart';
 import 'package:sportify/screens/students/logic/bloc/registered_students_bloc.dart';
@@ -44,6 +45,9 @@ class MyApp extends StatelessWidget {
           create: (_) => sl(),
         ),
         BlocProvider<RegisteredStudentsBloc>(
+          create: (_) => sl(),
+        ),
+        BlocProvider<ProfileBloc>(
           create: (_) => sl(),
         ),
         BlocProvider<CompetitionStBloc>(

@@ -111,16 +111,11 @@ class _WinnersScreenState extends State<WinnersScreen> {
                                                 MaterialPageRoute(
                                                     builder: (context) =>
                                                         ProfileScreen(
-                                                          id: state.response
-                                                              .data[index].id,
-                                                          studentInfo: state
+                                                          id: state
                                                               .response
                                                               .data[index]
-                                                              .studentInfo,
-                                                          place: state
-                                                              .response
-                                                              .data[index]
-                                                              .place,
+                                                              .studentInfo
+                                                              .id,
                                                         )));
                                           },
                                           child: WinnersListTile(

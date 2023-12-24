@@ -8,6 +8,9 @@ import 'package:sportify/screens/competition/logic/data/repositories/competition
 import 'package:sportify/screens/login/logic/bloc/login_bloc.dart';
 import 'package:sportify/screens/login/logic/data/datasources/login_datasource.dart';
 import 'package:sportify/screens/login/logic/data/repositories/login_repository.dart';
+import 'package:sportify/screens/profile/logic/bloc/profile_bloc.dart';
+import 'package:sportify/screens/profile/logic/data/datasources/profile_datasource.dart';
+import 'package:sportify/screens/profile/logic/data/repositories/profile_repository.dart';
 import 'package:sportify/screens/result/screens/winners/logic/bloc/winners_bloc.dart';
 import 'package:sportify/screens/result/screens/winners/logic/data/datasources/grid_datasource.dart';
 import 'package:sportify/screens/result/screens/winners/logic/data/repositories%20copy/grid_repository.dart';
@@ -20,6 +23,7 @@ import 'package:sportify/screens/students/logic/data/repositories%20copy/registe
 import 'package:sportify/screens/students/screens/competition_students/logic/bloc/competition_st_bloc.dart';
 import 'package:sportify/screens/students/screens/competition_students/logic/data/datasources/competition_st_datasource.dart';
 import 'package:sportify/screens/students/screens/competition_students/logic/data/repositories%20copy/competition_st_repository.dart';
+
 
 var sl = GetIt.instance;
 
@@ -46,21 +50,34 @@ void initGetIt() async {
 
   sl.registerFactory<WinnersBloc>(() => WinnersBloc(sl()));
 
-  sl.registerLazySingleton<WinnersRepository>(() => WinnersRepositoryImpl(sl()));
+  sl.registerLazySingleton<WinnersRepository>(
+      () => WinnersRepositoryImpl(sl()));
 
   sl.registerLazySingleton<WinnersDataSource>(() => WinnersDataSourceImpl());
 
   sl.registerFactory<AddStudentBloc>(() => AddStudentBloc(sl()));
 
-  sl.registerLazySingleton<AddStudentRepository>(() => AddStudentRepositoryImpl(sl()));
+  sl.registerLazySingleton<AddStudentRepository>(
+      () => AddStudentRepositoryImpl(sl()));
 
-  sl.registerLazySingleton<AddStudentDataSource>(() => AddStudentDataSourceImpl());
+  sl.registerLazySingleton<AddStudentDataSource>(
+      () => AddStudentDataSourceImpl());
 
-  sl.registerFactory<RegisteredStudentsBloc>(() => RegisteredStudentsBloc(sl()));
+  sl.registerFactory<RegisteredStudentsBloc>(
+      () => RegisteredStudentsBloc(sl()));
 
-  sl.registerLazySingleton<RegisteredStRepository>(() => RegisteredStRepositoryImpl(sl()));
+  sl.registerLazySingleton<RegisteredStRepository>(
+      () => RegisteredStRepositoryImpl(sl()));
 
-  sl.registerLazySingleton<RegisteredStDataSource>(() => RegisteredStDataSourceImpl());
+  sl.registerLazySingleton<RegisteredStDataSource>(
+      () => RegisteredStDataSourceImpl());
+
+  sl.registerFactory<ProfileBloc>(() => ProfileBloc(sl()));
+
+  sl.registerLazySingleton<ProfileRepository>(
+      () => ProfileRepositoryImpl(sl()));
+
+  sl.registerLazySingleton<ProfileDataSource>(() => ProfileDataSourceImpl());
 
   sl.registerFactory<CompetitionStBloc>(() => CompetitionStBloc(sl()));
 
