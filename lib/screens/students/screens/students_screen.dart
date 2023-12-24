@@ -102,12 +102,16 @@ class _StudentsScreenState extends State<StudentsScreen> {
                               InkWell(
                                 onTap: () {
                                   log("id: ${state.response.data[index].id}");
+
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => RegisteredStudentsScreen(
-                                                id: state.response.data[index].id,
-                                                name: state.response.data[index].name,
+                                          builder: (context) =>
+                                              RegisteredStudentsScreen(
+                                                id: state
+                                                    .response.data[index].id,
+                                                name: state
+                                                    .response.data[index].name,
                                               )));
                                 },
                                 child: Container(

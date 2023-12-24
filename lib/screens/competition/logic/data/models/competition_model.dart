@@ -29,6 +29,8 @@ class Data {
   @JsonKey(name: 'competition_type')
   String competitionType;
   String? region;
+  @JsonKey(name: 'registration_finished')
+  bool? registrationFinished;
 
   Data(
       {required this.id,
@@ -40,7 +42,8 @@ class Data {
       required this.address,
       required this.federation,
       required this.competitionType,
-      this.region});
+      this.region,
+      this.registrationFinished});
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 

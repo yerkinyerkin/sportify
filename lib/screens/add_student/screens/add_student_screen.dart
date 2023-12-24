@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,82 +44,80 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
           automaticallyImplyLeading: false,
           backgroundColor: AppConst.kDarkPurple,
         ),
-        body: BlocProvider(
-          create: (context) => sl<AddStudentBloc>(),
-          child: BlocListener<AddStudentBloc, AddStudentState>(
-            listener: (context, state) {
-              if (state is AddStudentLoading) {
-                const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              if (state is AddStudentFailure) {
-                Center(
-                  child: Text(state.response.toString()),
-                );
-              }
-              if (state is AddStudentSuccess) {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => MainScreenToken(index: 3)));
-              }
-            },
-            child: SingleChildScrollView(
-              child: Container(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  children: [
-                    const SizedBox(height: 10),
-                    InkWell(
-                      onTap: () {
-                        _pickImage();
-                      },
-                      child: Container(
-                        height: 100,
-                        width: 100,
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.circle, color: AppConst.kGrey),
-                        child: selectedImage != null
-                            ? ClipOval(
-                                child: Image.file(
-                                  selectedImage!,
-                                  fit: BoxFit.cover,
-                                ),
-                              )
-                            : const Icon(
-                                Icons.add_a_photo,
-                                size: 40,
-                                color: Color.fromARGB(255, 96, 95, 95),
+        body: BlocListener<AddStudentBloc, AddStudentState>(
+          listener: (context, state) {
+            if (state is AddStudentLoading) {
+              const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (state is AddStudentFailure) {
+              Center(
+                child: Text(state.response.toString()),
+              );
+            }
+            if (state is AddStudentSuccess) {
+              log("SUCCESS");
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => MainScreenToken(index: 3)));
+            }
+          },
+          child: SingleChildScrollView(
+            child: Container(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  const SizedBox(height: 10),
+                  InkWell(
+                    onTap: () {
+                      _pickImage();
+                    },
+                    child: Container(
+                      height: 100,
+                      width: 100,
+                      decoration: const BoxDecoration(
+                          shape: BoxShape.circle, color: AppConst.kGrey),
+                      child: selectedImage != null
+                          ? ClipOval(
+                              child: Image.file(
+                                selectedImage!,
+                                fit: BoxFit.cover,
                               ),
-                      ),
+                            )
+                          : const Icon(
+                              Icons.add_a_photo,
+                              size: 40,
+                              color: Color.fromARGB(255, 96, 95, 95),
+                            ),
                     ),
-                    const SizedBox(height: 16),
-                    TextFormStudents(
-                      labelText: "Есімі",
-                      textEditingController: firstNameController,
-                    ),
-                    const SizedBox(height: 16),
-                    TextFormStudents(
-                        labelText: "Тегі",
-                        textEditingController: lastNameController),
-                    const SizedBox(height: 16),
-                    TextFormStudents(
-                        labelText: "Туған күні",
-                        textEditingController: birthdayController),
-                    const SizedBox(height: 16),
-                    CustomButton(
-                      text: "Жаңа шәкірт қосу",
-                      onTap: () {
-                        context.read<AddStudentBloc>().add(AddStudentsCommon(
-                              image: selectedImage!,
-                              firstName: firstNameController.text,
-                              lastName: lastNameController.text,
-                              dateOfBirth: birthdayController.text,
-                            ));
-                      },
-                      color: const Color(0xff170c36),
-                    )
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 16),
+                  TextFormStudents(
+                    labelText: "Есімі",
+                    textEditingController: firstNameController,
+                  ),
+                  const SizedBox(height: 16),
+                  TextFormStudents(
+                      labelText: "Тегі",
+                      textEditingController: lastNameController),
+                  const SizedBox(height: 16),
+                  TextFormStudents(
+                      labelText: "Туған күні",
+                      textEditingController: birthdayController),
+                  const SizedBox(height: 16),
+                  CustomButton(
+                    text: "Жаңа шәкірт қосу",
+                    onTap: () {
+                      context.read<AddStudentBloc>().add(AddStudentsCommon(
+                            image: selectedImage!,
+                            firstName: firstNameController.text,
+                            lastName: lastNameController.text,
+                            dateOfBirth: birthdayController.text,
+                          ));
+                    },
+                    color: const Color(0xff170c36),
+                  )
+                ],
               ),
             ),
           ),

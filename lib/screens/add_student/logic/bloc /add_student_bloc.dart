@@ -20,7 +20,6 @@ class AddStudentBloc extends Bloc<AddStudentEvent, AddStudentState> {
           final AddStudentsModel response =
               await addStudentRepository.addStudents(event.image,event.firstName,event.lastName,event.dateOfBirth,);
           emit(AddStudentSuccess(response: response));
-          log('Successfully added');
         } on DioError catch (e) {
           emit(AddStudentFailure(e.response!));
         }

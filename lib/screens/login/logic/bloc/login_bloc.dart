@@ -9,6 +9,7 @@ part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   Box tokens = Hive.box('tokens');
+  Box coach = Hive.box('coach');
   final LoginRepository loginRepository;
   LoginBloc(this.loginRepository) : super(LoginInitial()) {
     on<GetToken>(
@@ -18,6 +19,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           final LoginModel response =
               await loginRepository.getToken(event.email, event.password);
           tokens.put('access', response.access);
+          tokens.put('coach', response.username);
           emit(LoginSuccess(response));
         } on DioError catch (e) {
           emit(LoginFailure(e.response!));

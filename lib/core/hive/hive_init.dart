@@ -6,4 +6,5 @@ initHiveAdapters() {
 
 initHiveBoxes() async {
   await Hive.openBox('tokens');
+  await Hive.openBox('coach');
 }

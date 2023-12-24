@@ -30,6 +30,7 @@ Data _$DataFromJson(Map<String, dynamic> json) => Data(
       federation: json['federation'] as String,
       competitionType: json['competition_type'] as String,
       region: json['region'] as String?,
+      registrationFinished: json['registration_finished'] as bool?,
     );
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
@@ -43,6 +44,7 @@ Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'federation': instance.federation,
       'competition_type': instance.competitionType,
       'region': instance.region,
+      'registration_finished': instance.registrationFinished,
     };
 
 Organizator _$OrganizatorFromJson(Map<String, dynamic> json) => Organizator(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sportify/core/custom/utils/constants.dart';
 import 'package:sportify/screens/add_student/screens/add_student_screen.dart';
+import 'package:sportify/screens/coach_students/screens/coach_students_screen.dart';
 import 'package:sportify/screens/competition/screens/competition_screen.dart';
 import 'package:sportify/screens/other/screens/other_screen.dart';
 import 'package:sportify/screens/students/screens/students_screen.dart';
@@ -17,11 +18,9 @@ class MainScreenToken extends StatefulWidget {
 class _MainScreenTokenState extends State<MainScreenToken> {
   final List<Widget> _widgetOptions = <Widget>[
     const CompetitionScreen(),
-    const Center(
-      child: Text("News"),
-    ),
+    const Center(child: Text("News")),
     const AddStudentScreen(),
-    StudentsScreen(),
+    const CoachStudentsScreen(),
     const OtherScreenToken(),
   ];
 

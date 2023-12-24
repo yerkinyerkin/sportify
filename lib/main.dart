@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sportify/core/getIt/injection_container.dart';
 import 'package:sportify/core/hive/hive_init.dart';
 import 'package:sportify/screens/add_student/logic/bloc%20/add_student_bloc.dart';
+import 'package:sportify/screens/coach_students/logic/bloc/coach_students_bloc.dart';
 import 'package:sportify/screens/competition/logic/bloc/competition_bloc.dart';
 import 'package:sportify/screens/login/logic/bloc/login_bloc.dart';
 import 'package:sportify/screens/main/screens/main_screen.dart';
@@ -51,6 +52,9 @@ class MyApp extends StatelessWidget {
           create: (_) => sl(),
         ),
         BlocProvider<CompetitionStBloc>(
+          create: (_) => sl(),
+        ),
+        BlocProvider<CoachStudentsBloc>(
           create: (_) => sl(),
         ),
       ],

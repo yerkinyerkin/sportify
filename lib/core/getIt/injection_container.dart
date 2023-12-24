@@ -2,6 +2,9 @@ import 'package:get_it/get_it.dart';
 import 'package:sportify/screens/add_student/logic/bloc%20/add_student_bloc.dart';
 import 'package:sportify/screens/add_student/logic/data/datasources/add_student_datasource.dart';
 import 'package:sportify/screens/add_student/logic/data/repositories/add_student_repository.dart';
+import 'package:sportify/screens/coach_students/logic/bloc/coach_students_bloc.dart';
+import 'package:sportify/screens/coach_students/logic/data/datasources/coach_students_datasources.dart';
+import 'package:sportify/screens/coach_students/logic/data/repositories/coach_students_repositories.dart';
 import 'package:sportify/screens/competition/logic/bloc/competition_bloc.dart';
 import 'package:sportify/screens/competition/logic/data/datasources/competition_datasource.dart';
 import 'package:sportify/screens/competition/logic/data/repositories/competition_repository.dart';
@@ -23,7 +26,6 @@ import 'package:sportify/screens/students/logic/data/repositories%20copy/registe
 import 'package:sportify/screens/students/screens/competition_students/logic/bloc/competition_st_bloc.dart';
 import 'package:sportify/screens/students/screens/competition_students/logic/data/datasources/competition_st_datasource.dart';
 import 'package:sportify/screens/students/screens/competition_students/logic/data/repositories%20copy/competition_st_repository.dart';
-
 
 var sl = GetIt.instance;
 
@@ -81,7 +83,17 @@ void initGetIt() async {
 
   sl.registerFactory<CompetitionStBloc>(() => CompetitionStBloc(sl()));
 
-  sl.registerLazySingleton<CompetitionStRepository>(() => CompetitionStRepositoryImpl(sl()));
+  sl.registerLazySingleton<CompetitionStRepository>(
+      () => CompetitionStRepositoryImpl(sl()));
 
-  sl.registerLazySingleton<CompetitionStDataSource>(() => CompetitionStDataSourceImpl());
+  sl.registerLazySingleton<CompetitionStDataSource>(
+      () => CompetitionStDataSourceImpl());
+
+  sl.registerFactory<CoachStudentsBloc>(() => CoachStudentsBloc(sl()));
+
+  sl.registerLazySingleton<CoachStudentsRepository>(
+      () => CoachStudentsRepositoryImpl(sl()));
+
+  sl.registerLazySingleton<CoachStudentsDataSource>(
+      () => CoachStudentsDataSourceImpl());
 }
